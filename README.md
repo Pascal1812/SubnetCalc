@@ -95,7 +95,7 @@ git push origin feature/AmazingFeature
 
 ## Contact 📧
 
-Votre Nom - [@Pascal031812](https://x.com/Pascal031812)
+Pascal SARR - [@Pascal031812](https://x.com/Pascal031812)
 
 Lien du projet : [https://github.com/Pascal1812/SubnetCalc](https://github.com/Pascal1812/SubnetCalc)
 
@@ -115,7 +115,7 @@ Lien du projet : [https://github.com/Pascal1812/SubnetCalc](https://github.com/P
   - Interface utilisateur responsive
   - Explications des calculs
 
-- **1.1.0** (À venir)
+- **1.1.0** (Prochaine version)
   - Support IPv6
   - Mode sombre
   - Export des résultats en PDF
