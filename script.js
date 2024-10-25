@@ -5,7 +5,7 @@ function calculateSubnet() {
   const subnetMask = document.getElementById("subnetMask").value;
 
   if (!validateInputs(ipAddress, subnetMask)) {
-    alert("Please enter valid IP address and subnet mask");
+    alert("Veuillez enter une addresse IP valide et un masque de sous-réseau");
     return;
   }
 
