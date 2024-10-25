@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calculateur de Sous-réseaux</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <div class="calculator">
+                <h1>Calculateur de Sous-réseaux</h1>
+                <div class="input-form">
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            id="ipAddress"
+                            placeholder="Adresse IP (ex: 192.168.1.0)"
+                        />
+                        <input
+                            type="text"
+                            id="subnetMask"
+                            placeholder="Masque (ex: 255.255.255.0 ou /24)"
+                        />
+                    </div>
+                    <button id="calculate">Calculer</button>
+                </div>
+                <div class="results" id="results">
+                    <div class="result-card">
+                        <h3>Adresse de Sous-réseau</h3>
+                        <p id="subnetAddress">-</p>
+                        <div class="explanation">
+                            <h4>Comment calculer ?</h4>
+                            <p>
+                                L'adresse de sous-réseau est obtenue en faisant
+                                un ET logique (AND) entre l'adresse IP et le
+                                masque de sous-réseau.
+                            </p>
+                            <div class="example" id="subnetExample"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Première Adresse Utilisable</h3>
+                        <p id="firstUsable">-</p>
+                        <div class="explanation">
+                            <h4>Comment calculer ?</h4>
+                            <p>
+                                C'est l'adresse qui suit l'adresse de
+                                sous-réseau. On ajoute 1 au dernier octet de
+                                l'adresse réseau.
+                            </p>
+                            <div class="example" id="firstUsableExample"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Dernière Adresse Utilisable</h3>
+                        <p id="lastUsable">-</p>
+                        <div class="explanation">
+                            <h4>Comment calculer ?</h4>
+                            <p>
+                                C'est l'adresse qui précède l'adresse de
+                                diffusion. On soustrait 1 au dernier octet de
+                                l'adresse de diffusion.
+                            </p>
+                            <div class="example" id="lastUsableExample"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Adresse de Diffusion</h3>
+                        <p id="broadcast">-</p>
+                        <div class="explanation">
+                            <h4>Comment calculer ?</h4>
+                            <p>
+                                L'adresse de diffusion est obtenue en mettant à
+                                1 tous les bits de la partie hôte de l'adresse
+                                réseau.
+                            </p>
+                            <div class="example" id="broadcastExample"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Sous-réseau Suivant</h3>
+                        <p id="nextSubnet">-</p>
+                        <div class="explanation">
+                            <h4>Comment calculer ?</h4>
+                            <p>
+                                On ajoute à l'adresse réseau actuelle le nombre
+                                d'adresses du bloc (déterminé par le masque).
+                            </p>
+                            <div class="example" id="nextSubnetExample"></div>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <h3>Nombre d'Hôtes Disponibles</h3>
+                        <p id="hosts">-</p>
+                        <div class="explanation">
+                            <h4>Comment calculer ?</h4>
+                            <p>
+                                Formule : 2^n - 2, où n est le nombre de bits à
+                                0 dans le masque. On soustrait 2 pour l'adresse
+                                réseau et de diffusion.
+                            </p>
+                            <div class="example" id="hostsExample"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
