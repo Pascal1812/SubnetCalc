@@ -170,66 +170,6 @@ button:hover {
     padding: 0 2px;
 }
 
-/* Dark mode styles */
-body.dark {
-    /* --primary-color: #2a2a72;
-    --secondary-color: #009ffd; */
-    background: linear-gradient(135deg, #333f77 0%, #482d63 100%);
-
-}
-
-body.dark .calculator {
-    background: var(--dark-calculator-bg);
-    color: var(--text-primary);
-}
-
-body.dark h1,
-body.dark .result-card h3,
-body.dark .result-card p {
-    color: var(--dark-text-secondary);
-}
-
-body.dark input {
-    background-color: var(--text-primary);
-    color: var(--dark-text-secondary);
-    border-color: var(--text-secondary);
-}
-
-body.dark .result-card {
-    background: var(--text-primary);
-}
-
-body.dark .explanation h4,
-body.dark .explanation p {
-    color: var(--dark-text-secondary);
-}
-
-body.dark .example {
-    background: #1a202c;
-    color: var(--text-primary);
-}
-
-/* Dark mode toggle button */
-.dark-mode-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    
-}
-
-.dark-mode-toggle:hover {
-    transform: scale(1.1);
-}
-
-body.light .dark-mode-toggle .moon,
-body.dark .dark-mode-toggle .sun {
-    display: none;
-}
 
 @media (max-width: 600px) {
     .calculator {
