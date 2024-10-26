@@ -1,3 +1,16 @@
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --calculator-bg: rgba(255, 255, 255, 0.95);
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --input-border: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+
+    --dark-calculator-bg: rgba(30, 30, 30, 0.95);
+    --dark-text-secondary: #cbd5e0;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +19,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -20,15 +33,15 @@ body {
 }
 
 .calculator {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--calculator-bg);
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 h1 {
     text-align: center;
-    color: #2d3748;
+    color: var(--text-primary);
     margin-bottom: 2rem;
     font-size: 2.5rem;
 }
@@ -50,7 +63,7 @@ input {
     flex: 1;
     min-width: 250px;
     padding: 1rem;
-    border: 2px solid #e2e8f0;
+    border: 2px solid var(--input-border);
     border-radius: 10px;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -58,12 +71,12 @@ input {
 
 input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color: var(--primary-color);
 }
 
 button {
     padding: 1rem 2rem;
-    background: #667eea;
+    background: var(--primary-color);
     color: white;
     border: none;
     border-radius: 10px;
@@ -73,7 +86,7 @@ button {
 }
 
 button:hover {
-    background: #764ba2;
+    background: var(--secondary-color);
     transform: translateY(-2px);
 }
 
@@ -88,50 +101,36 @@ button:hover {
     background: #f7fafc;
     padding: 1.5rem;
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px var(--shadow-color);
     transition: all 0.3s ease;
 }
 
 .result-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 15px var(--shadow-color);
 }
 
 .result-card h3 {
-    color: #4a5568;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
 }
 
 .result-card p {
-    color: #2d3748;
+    color: var(--text-primary);
     font-size: 1.2rem;
     font-weight: 500;
-}
-
-@media (max-width: 600px) {
-    .calculator {
-        padding: 1.5rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .input-group {
-        flex-direction: column;
-    }
 }
 
 .explanation {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid var(--input-border);
     font-size: 0.9rem;
 }
 
 .explanation h4 {
-    color: #4a5568;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-size: 1rem;
 }
@@ -150,6 +149,16 @@ button:hover {
     margin-top: 0.5rem;
     font-family: monospace;
     font-size: 0.9rem;
+    opacity: 0;
+    height: 0;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.result-card:hover .example {
+    opacity: 1;
+    height: auto;
+    margin-top: 1rem;
 }
 
 .binary {
@@ -161,24 +170,87 @@ button:hover {
     padding: 0 2px;
 }
 
-/* Add to existing CSS */
-.result-card {
-    transition: all 0.3s ease;
+/* Dark mode styles */
+body.dark {
+    /* --primary-color: #2a2a72;
+    --secondary-color: #009ffd; */
+    background: linear-gradient(135deg, #333f77 0%, #482d63 100%);
+
 }
 
-.result-card:hover {
-    transform: translateY(-5px);
+body.dark .calculator {
+    background: var(--dark-calculator-bg);
+    color: var(--text-primary);
 }
 
-.example {
-    opacity: 0;
-    height: 0;
-    transition: all 0.3s ease;
-    overflow: hidden;
+body.dark h1,
+body.dark .result-card h3,
+body.dark .result-card p {
+    color: var(--dark-text-secondary);
 }
 
-.result-card:hover .example {
-    opacity: 1;
-    height: auto;
-    margin-top: 1rem;
+body.dark input {
+    background-color: var(--text-primary);
+    color: var(--dark-text-secondary);
+    border-color: var(--text-secondary);
+}
+
+body.dark .result-card {
+    background: var(--text-primary);
+}
+
+body.dark .explanation h4,
+body.dark .explanation p {
+    color: var(--dark-text-secondary);
+}
+
+body.dark .example {
+    background: #1a202c;
+    color: var(--text-primary);
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+}
+
+body.light .dark-mode-toggle .moon,
+body.dark .dark-mode-toggle .sun {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .calculator {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+    .dark-mode-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5%;
+        top: 0px;
+        right: 0px;
+        position: fixed;
+        background-color: var(--dark-calculator-bg);
+    }
 }

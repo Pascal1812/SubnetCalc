@@ -95,3 +95,23 @@ function validateInputs(ip, mask) {
 
   return true;
 }
+
+// *** Dark mode *** //
+  
+document.addEventListener('DOMContentLoaded', (event) => {
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // *** Check for saved theme *** //
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  body.classList.add(currentTheme);
+
+  darkModeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      body.classList.toggle('light');
+      
+      // *** Save theme preference on local storage *** //
+      const theme = body.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+  });
+});
