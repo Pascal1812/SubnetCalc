@@ -1,4 +1,15 @@
 document.getElementById("calculate").addEventListener("click", calculateSubnet);
+let exportPdf = document.getElementById("export");
+exportPdf.addEventListener("click", exportToPdf);
+
+var result = {
+  subnetAddr : "",
+  firstUsable : "",
+  lastUsable : "",
+  broadcast : "",
+  nextSubnet: "",
+  hosts : "",
+}
 
 function calculateSubnet() {
   const ipAddress = document.getElementById("ipAddress").value;
@@ -48,6 +59,13 @@ function calculateSubnet() {
     }, 0);
   const hosts = Math.pow(2, hostBits) - 2;
 
+  result.subnetAddr = subnetAddr;
+  result.firstUsable = firstUsable;
+  result.lastUsable = lastUsable;
+  result.broadcast = broadcast;
+  result.nextSubnet = nextSubnet;
+  result.hosts = hosts;
+
   // Update UI
   document.getElementById("subnetAddress").textContent = subnetAddr.join(".");
   document.getElementById("firstUsable").textContent = firstUsable.join(".");
@@ -55,6 +73,17 @@ function calculateSubnet() {
   document.getElementById("broadcast").textContent = broadcast.join(".");
   document.getElementById("nextSubnet").textContent = nextSubnet.join(".");
   document.getElementById("hosts").textContent = hosts;
+  showDownloadBtn()
+
+}
+
+function exportToPdf(){
+  console.log("exporting to pdf now ....");
+  console.log(result);
+}
+
+function showDownloadBtn(){
+  exportPdf.style.display = "block"
 }
 
 function cidrToMask(cidr) {

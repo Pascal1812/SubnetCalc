@@ -123,7 +123,7 @@ Lien du projet : [https://github.com/Pascal1812/SubnetCalc](https://github.com/P
 ## Roadmap 🛣️
 
 - [ ] Ajout du support IPv6
-- [ ] Mode sombre
+- [x] Mode sombre
 - [ ] Sauvegarde des calculs récents
 - [ ] Export des résultats en différents formats
 - [ ] Support multilingue
