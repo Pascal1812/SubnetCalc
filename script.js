@@ -80,6 +80,16 @@ function exportToPdf(){
   console.log("exporting to pdf now ....");
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
+  
+  
+  // Creating a Centered Title
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(16);
+  const title = "Rapport de Calcul de Sous-réseau";
+  const pageWidth = doc.internal.pageSize.width;
+  doc.text(title, pageWidth/2, 15, { align: "center" });
+
+  // The table data from the json "result"
   const head = [['Nom', 'Resultat']];
   const data = [
     ['Adresse de sous reseau', result.subnetAddr.join(".")],
@@ -88,14 +98,32 @@ function exportToPdf(){
     ['Adresse de diffusion', result.broadcast.join(".")],
     ['Sous reseau suivant', result.nextSubnet.join(".")],
     ['Nombre d\'hotes disponibles', result.hosts],
-  ]
+  ];
+
+  // Creating the table and parsing data
   doc.autoTable({
-    head : head,
-    body : data,
-    startY : 20,
+    head: head,
+    body: data,
+    startY: 30,
     theme: 'grid',
+    styles: {
+      fontSize: 10,
+      cellPadding: 3,
+    },
+    headStyles: {
+      fillColor: "#667eea",
+      textColor: 255,
+    },
   });
-  doc.save('results.pdf');
+
+  // creating a simple footer
+  doc.setFont("helvetica", "italic");
+  doc.setFontSize(10);
+  const today = new Date().toLocaleDateString();
+  const footer = `Généré le ${today} depuis https://subnet-calculator-steel.vercel.app/`;
+  doc.text(footer, pageWidth/2, doc.internal.pageSize.height - 10, { align: "center" });
+
+  doc.save('Resultats du calcul.pdf');
 }
 
 function showDownloadBtn(){
