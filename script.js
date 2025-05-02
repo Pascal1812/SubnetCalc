@@ -74,12 +74,28 @@ function calculateSubnet() {
   document.getElementById("nextSubnet").textContent = nextSubnet.join(".");
   document.getElementById("hosts").textContent = hosts;
   showDownloadBtn()
-
 }
 
 function exportToPdf(){
   console.log("exporting to pdf now ....");
-  console.log(result);
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const head = [['Nom', 'Resultat']];
+  const data = [
+    ['Adresse de sous reseau', result.subnetAddr.join(".")],
+    ['Premiere adresse utilisable', result.firstUsable.join(".")],
+    ['Derniere adresse utilisable', result.lastUsable.join(".")],
+    ['Adresse de diffusion', result.broadcast.join(".")],
+    ['Sous reseau suivant', result.nextSubnet.join(".")],
+    ['Nombre d\'hotes disponibles', result.hosts],
+  ]
+  doc.autoTable({
+    head : head,
+    body : data,
+    startY : 20,
+    theme: 'grid',
+  });
+  doc.save('results.pdf');
 }
 
 function showDownloadBtn(){
